@@ -24,7 +24,12 @@
     $("#cabeza").html(JSON.stringify(r));
   });
 
-
+ function callback(txt){
+  console.log(txt)
+  let j = JSON.parse(txt)
+  urlMap = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14811.842063521037!2d${j.long}!3d${j.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1696017777220!5m2!1ses-419!2smx`
+  $("#map").attr("src",urlMap)
+ }
 
 
   function httpGetAsync(url, callback) {
@@ -41,6 +46,8 @@
   const urlgeo = "https://ipgeolocation.abstractapi.com/v1/?api_key=bfa177731ce9400d8320e530440591cb"
   httpGetAsync([urlgeo,urlphone])
 
+
+    
  
 }
 
@@ -49,7 +56,13 @@
 </head>
   <body>
     <div id="cabeza"><h1>Cabeza</h1></div>
-    <div id="cuerpo">Cuerpo</div>
+    <div id="cuerpo">
+
+      <iframe id="map"  width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    </div>
     <div id="pies">Pies</div>
+
+
   </body>
 </html>
