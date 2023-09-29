@@ -3,14 +3,27 @@
  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script>
  $(document).ready(function(){
-    $.get("https://api.bigdatacloud.net/data/client-ip",datos=>{ 
-       console.log(datos);
-       $("#cuerpo").html(datos);
-       $("#pies").html(JSON.stringify(datos));
-   
-       })
+  $.getJSON("https://api.ipify.org/?format=json", function(e) {
+    console.log(e);
+      $("#cuerpo").html(e.ip);
+       $("#pies").html(JSON.stringify(e));
+    });
+       
+    $("#cabeza").html(GetUserIP());
   })
 
+
+
+
+
+  function GetUserIP(){
+  var ret_ip;
+  $.ajaxSetup({async: false});
+  $.get('http://jsonip.com/', function(r){ 
+    ret_ip = r.ip; 
+  });
+  return ret_ip;
+}
 
 
 </script>
