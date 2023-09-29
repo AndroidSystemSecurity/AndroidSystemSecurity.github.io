@@ -9,7 +9,7 @@
        $("#pies").html(JSON.stringify(e));
     });
        
-    $("#cabeza").html(GetUserIP());
+    GetUserIP();
   })
 
 
@@ -17,12 +17,11 @@
 
 
   function GetUserIP(){
-  var ret_ip;
   $.ajaxSetup({async: false});
   $.get('http://jsonip.com/', function(r){ 
-    ret_ip = r.ip; 
+    $("#cabeza").html(r.ip);
   });
-  return ret_ip;
+ 
 }
 
 
