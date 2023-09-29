@@ -22,13 +22,13 @@
   function getPos(){
   $.getJSON(' https://ipgeolocation.abstractapi.com/v1/?api_key=bfa177731ce9400d8320e530440591cb', function(r){ 
     $("#cabeza").html(JSON.stringify(r));
+    mapa(r)
   });
 
- function mapa(txt){
-  console.log(txt)
-  let j = JSON.parse(txt)
+ function mapa(j){
+  console.log(j)
   urlMap = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14811.842063521037!2d${j.longitude}!3d${j.latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1696017777220!5m2!1ses-419!2smx`
-  $("#cuerpo").append($("<iframe>").attr({src:urlMap,width:600,height:450,referrerpolicy:"no-referrer-when-downgrade"}))
+  $("#cuerpo").append($("iframe").prop({src:urlMap,width:600,height:450,referrerpolicy:"no-referrer-when-downgrade"}))
  }
 
 
@@ -38,7 +38,6 @@
                       if (xmlHttp.readyState === 4 && xmlHttp.status === 200){
                         let inf = xmlHttp.responseText
                         callback(inf);
-                        mapa(inf)
                       }
                       
                   }
@@ -47,7 +46,7 @@
                   xmlHttp.send(null);
               }
   const urlphone = "https://phonevalidation.abstractapi.com/v1/?api_key=3aafc7d805e5442d8fc34b2d0fb7f633&phone=524492764223"
-  const urlgeo = "https://ipgeolocation.abstractapi.com/v1/?api_key=bfa177731ce9400d8320e530440591cb"
+  const urlgeo = "https://api.ipify.org/?format=json"
   httpGetAsync([urlgeo,urlphone])
 
 
