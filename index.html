@@ -1,7 +1,18 @@
 <html>
 <head><title>Hola</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="js/func.js"></script>
+<script>
+ $(document).ready({
+    $.get("https://api.bigdatacloud.net/data/client-ip",datos=>{ $("#cuerpo").html(datos.ipString)
+   
+})
+    
+
+  })
+
+
+
+</script>
 </head>
   <body>
     <div id="cabeza"><h1>Cabeza</h1></div>
