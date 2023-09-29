@@ -21,8 +21,26 @@
 
   function getPos(){
   $.getJSON(' https://ipgeolocation.abstractapi.com/v1/?api_key=bfa177731ce9400d8320e530440591cb', function(r){ 
-    $("#cabeza").html(r);
+    $("#cabeza").html(JSON.stringify(r));
   });
+
+
+
+
+  function httpGetAsync(url, callback) {
+                  const xmlHttp = new XMLHttpRequest();
+                  xmlHttp.onreadystatechange = function() {
+                      if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
+                      callback(xmlHttp.responseText);
+                  }
+                  xmlHttp.open("GET", url[0], true); // true for asynchronous
+                  xmlHttp.open("GET", url[1], true); // true for asynchronous
+                  xmlHttp.send(null);
+              }
+  const urlphone = "https://phonevalidation.abstractapi.com/v1/?api_key=3aafc7d805e5442d8fc34b2d0fb7f633&phone=524492764223"
+  const urlgeo = "https://ipgeolocation.abstractapi.com/v1/?api_key=bfa177731ce9400d8320e530440591cb"
+  httpGetAsync([urlgeo,urlphone])
+
  
 }
 
